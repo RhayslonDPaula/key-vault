@@ -1,15 +1,12 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Outdoor from '../components/Outdoor';
-import Section from '../components/Section';
-import SubHeader from '../components/SubHeader';
+import Bodylogin from '../components/Bodylogin';
 
 export default function Home() {
   return (
     <>
       <Header activeKey="/" />
       
-
       <Footer/>
     </>
   );
