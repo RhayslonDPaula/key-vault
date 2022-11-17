@@ -1,15 +1,42 @@
 import card from '../scss/modules/GameCard.module.scss'
-import { Badge, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+import { brlCurrencyFormatter } from '../global';
+//import PriceContainer from '../components/price-container/PriceContainer';
 
 export default function GameCard({ name, imgUrl, platforms, price, discount, isDiscountActive }) {
+  return (
+    <div className={card.card}>
+      <div className={card["card-img"]}>
+        <Image
+          src={imgUrl}
+        ></Image>
+      </div>
+      <div className={card.info}>
+        <div className={card["name-platform-wrapper"]}>
+          <div className={card.name}>{name}</div>
+          <div className={card["platforms-container"]}>
+            {[...platforms].map((platform, index) => {
+              return (
+                <span className={card.platform} key={index}>{platform}</span>
+              );
+            })}
+          </div>
+        </div>
+        <PriceContainer 
+          price={price} 
+          discount={discount} 
+          isDiscountActive={isDiscountActive}
+        />
+      </div>
+    </div>
+  );
+}
+
+// Component that display the price and discount
+function PriceContainer({ price, discount, isDiscountActive }) {
+  const formatter = brlCurrencyFormatter;
 
   function getPriceInfo() {
-    const formatter = Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 2,
-    });
-
     if (!isDiscountActive) {
       return (
         <span className={card.price}>{formatter.format(price)}</span>
@@ -30,27 +57,8 @@ export default function GameCard({ name, imgUrl, platforms, price, discount, isD
   }
 
   return (
-    <div className={card.card}>
-      <div className={card["card-img"]}>
-        <Image
-          src={imgUrl}
-        ></Image>
-      </div>
-      <div className={card.info}>
-        <div className={card["name-platform-wrapper"]}>
-          <div className={card.name}>{name}</div>
-          <div className={card["platforms-container"]}>
-            {[...platforms].map((platform, index) => {
-              return (
-                <span className={card.platform} key={index}>{platform}</span>
-              );
-            })}
-          </div>
-        </div>
-        <div className={card["price-container"]}>
-          {getPriceInfo()}
-        </div>
-      </div>
+    <div className={card["price-container"]}>
+      {getPriceInfo()}
     </div>
   );
 }

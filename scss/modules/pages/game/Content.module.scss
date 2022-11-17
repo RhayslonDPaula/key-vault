@@ -1,0 +1,17 @@
+@use '../../../custom' as custom;
+@use '../../../colors' as colors;
+
+.container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+
+  .left, .right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .right {
+    padding-left: 6px;
+  }
+}

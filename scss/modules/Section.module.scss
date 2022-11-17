@@ -12,6 +12,15 @@ $small-gap: 4px;
 
   hr {
     margin: 0 $gap;
+
+    border: 2px solid colors.$kv-primary-700;
+    border-radius: 10px;
+    opacity: 1;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
   }
 }
 
@@ -23,10 +32,15 @@ $small-gap: 4px;
 
   h3 {
     @include custom.title;
-
+    color: colors.$kv-text-on-primary;
     font-size: 1.8rem;
+
     margin: 0;
     padding: 0;
+  }
+
+  button {
+    color: colors.$kv-text-on-primary;
   }
 }
 
@@ -50,7 +64,7 @@ $small-gap: 4px;
     grid-template-columns: 25% 25% 25% 25%;
   }
 
-  .removed {
+  .sentinel {
     display: none;
   }
 }
@@ -70,7 +84,7 @@ $small-gap: 4px;
     padding: 0 $small-gap;
   }
 
-  .removed {
+  .sentinel {
     display: none;
   }
 }

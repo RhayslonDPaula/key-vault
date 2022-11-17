@@ -1,7 +1,102 @@
-.text {
-  font-size: 1.2rem; // 12px
+@use '../colors' as colors;
+@use '../breakpoints' as breakpoints;
+
+$spacing: 16px;
+
+.nav-bar {
+  width: 100%;
+  padding: 10px;
+  background-color: colors.$kv-primary-800;
+
+  color: colors.$kv-text-on-primary;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing;
+
+    // Menu icon
+    i {
+      font-size: 1.8rem;
+      opacity: 0.8;
+      transition: opacity 200ms ease-in-out;
+      display: none;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.nav-left {
+  margin-right: auto;
+}
+
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $spacing;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  opacity: 0.6;
+  transition: 100ms opacity ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+.btn {
+  font-size: 1.2rem !important;
+}
+
+// Active navLink
+.active {
+  opacity: 1;
 }
 
 .logo {
   font-size: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+@media screen and (max-width: breakpoints.$sm) {
+  .btn {
+    display: none;
+  }
+
+  .nav-bar {
+    nav {
+      i {
+        display: inline-block;
+      }
+    }
+  }
+
+  .nav-bar {
+    .nav-left {
+      display: none;
+    }
+  }
+
+  .nav-bar-container {
+    justify-content: space-between;
+  }
 }

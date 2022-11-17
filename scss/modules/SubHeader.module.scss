@@ -1,0 +1,50 @@
+@use '../colors' as colors;
+
+$spacing: 16px;
+
+.main-container {
+  width: 100%;
+  background-color: colors.$kv-primary-900;
+  color: colors.$kv-text-on-primary;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing;
+
+  padding: 1.2rem;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  opacity: 0.6;
+  transition: 100ms opacity ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+// Active navLink
+.active {
+  opacity: 1;
+}
