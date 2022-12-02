@@ -12,9 +12,8 @@ function BodyRegister() {
   const [open, setOpen] = useState(false);
   return (
     
-    <Container>
-    
-    <Card  bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
+    <Container className ="p-5">
+    <Card className ="p-4" bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
       <Card.Body>
      <Stack gap={2} className="col-md-5 mx-auto">
      <Button variant= "shadow text-bg-kv-primary-900">

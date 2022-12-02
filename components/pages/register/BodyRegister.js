@@ -7,20 +7,20 @@ import Card from 'react-bootstrap/Card';
 
 function BodyRegister() {
   return (
-    <Container>
-    <Card  bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
+    <Container className ="p-5">
+    <Card className ="p-4" bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
       <Card.Body>
      <Stack gap={2} className="col-md-5 mx-auto">
      <Form.Group className="mb-7">
         <Card.Title > <h2>Cadastre-se !</h2> </Card.Title>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Group className="mb-3" controlId="formBasictext">
         <Form.Label> Seu nick</Form.Label>
-        <Form.Control type="name" placeholder="Digite seu nome" /> 
+        <Form.Control type="text" placeholder="Digite seu nome" /> 
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCPF">
+      <Form.Group className="mb-3" controlId="formBasictext">
         <Form.Label> Seu CPF</Form.Label>
-        <Form.Control type="cpf" placeholder="Digite seu cpf" />
+        <Form.Control type="text" placeholder="Digite seu cpf" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Endereço de e-mail</Form.Label>
