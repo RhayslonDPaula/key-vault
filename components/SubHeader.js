@@ -4,19 +4,19 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useGenre from '../hooks/useGenre';
 import SearchBar from './ui/SearchBar';
-import SimpleDropDown from './ui/SimpleDropDown';
+import * as Kv from "./ui/Kv";
 
-export default function SubHeader({ activeKey }) {
+export default function SubHeader() {
   const router = useRouter();
   const { genres, isLoading, isError } = useGenre();
 
   function handleOnSubmit(e) {
     e.preventDefault();
 
-    let myQuery = {};
+    let myQuery = {sort: "nameAsc"};
     if (e.target.querySelector("input").value) {
       myQuery = {
-        entry: e.target.querySelector("input").value
+        entry: e.target.querySelector("input").value,
       }
     }
 
@@ -26,67 +26,86 @@ export default function SubHeader({ activeKey }) {
     })
   }
 
+  function onClickGenre(genre) {
+    router.push({
+      pathname: "/game",
+      query: {
+        genres: genre.name.toLowerCase(),
+        sort: "nameAsc"
+      }
+    })
+  }
+
+  function onClickDiscounted() {
+    router.push({
+      pathname: "/game",
+      query: {
+        discounted: true,
+        sort: "priceAsc"
+      }
+    })
+  }
+
+  function onClickRecent() {
+    router.push({
+      pathname: "/game",
+      query: {
+        sort: "nameAsc"
+      }
+    })
+  }
+
   return (
-    <div className={subHeader["main-container"] + " sticky-top"}>
-      <Container className={subHeader.container}>
-        <SearchBar onSubmit={handleOnSubmit} />
-        <div className={`${subHeader["responsive-dropdown"]}`}>
-          <SimpleDropDown title="Navegar">
-            <Link
-              href={`/discounted`}
-              target="_blank"
-              className={`${(activeKey === 0 ? subHeader.active : "")} w-100 d-block ps-3 pe-3 pt-1 pb-1`}
-            >
-              Promoções
-            </Link>
-            <Link
-              href={`/recently-added`}
-              target="_blank"
-              className={`${(activeKey === 0 ? subHeader.active : "")} w-100 d-block ps-3 pe-3 pt-1 pb-1`}
-            >
-              Novidades
-            </Link>
-          </SimpleDropDown>
-        </div>
-        <div className={`${subHeader["genre-dropdown"]}`}>
-          <SimpleDropDown title="Categorias">
-            {genres ? genres.map((genre, index) => {
-              return (
-                <Link
-                  href={{
-                    pathname: "/game",
-                    query: { genres: genre.name.toLowerCase() }
-                  }}
-                  className="w-100 d-block ps-3 pe-3 pt-1 pb-1"
-                  key={index}
-                >
-                  {genre.name}
-                </Link>
-              )
-            }) : ""}
-          </SimpleDropDown>
-        </div>
-        <nav>
-          <Link
-            href={{
-              pathname: "/game",
-              query: { discounted: true }
-            }}
-            className={`${(activeKey === 0 ? subHeader.active : "")}`}
-          >
+    <Container className={`${subHeader["main-container"]} sticky-top`}>
+      <SearchBar onSubmit={handleOnSubmit} />
+      <div className={`${subHeader["responsive-dropdown"]}`}>
+        <Kv.Dropdown title="Navegar">
+          <Dropdown.Item as="div" onClick={() => onClickDiscounted()}>
             Promoções
-          </Link>
-          <Link
-            href={{
-              pathname: "/game",
-              query: { tags: "recently added" }
-            }}
-            className={`${(activeKey === 1 ? subHeader.active : "")}`}
-          >
+          </Dropdown.Item>
+          <Dropdown.Item as="div" onClick={() => onClickRecent()}>
             Novidades
-          </Link>
-        </nav>
-      </Container>
-    </div>
+          </Dropdown.Item>
+        </Kv.Dropdown>
+      </div>
+      <div className={`${subHeader["genre-dropdown"]}`}>
+        <Kv.Dropdown title="Categorias" variant="bg-900">
+          {genres ? genres.map((genre, index) => {
+            return (
+              <Dropdown.Item
+                as="div"
+                onClick={() => onClickGenre(genre)}
+                key={index}
+              >
+                {genre.name}
+              </Dropdown.Item>
+            )
+          }) : ""}
+        </Kv.Dropdown>
+      </div>
+      <nav>
+        <Link
+          href={{
+            pathname: "/game",
+            query: { 
+              discounted: true,
+              sort: "priceAsc" 
+            }
+          }}
+        >
+          Promoções
+        </Link>
+        <Link
+          href={{
+            pathname: "/game",
+            query: {
+              sort: "nameAsc"
+            }
+          }}
+        >
+          Novidades
+        </Link>
+      </nav>
+    </Container>
   );
 }

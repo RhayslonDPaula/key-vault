@@ -4,22 +4,24 @@
 .card {
   background-color: colors.$kv-primary-800;
   border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   height: 100%;
 
   display: flex;
   flex-direction: column;
 
+  font-size: 1rem;
+
   .card-img {
     position: relative;
     padding-bottom: 133%;
-    display: block;
   }
 
   img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
     object-fit: cover;
     border-radius: 10px 10px 0px 0px;
   }
@@ -43,6 +45,19 @@
   &:hover .new-price {
     background-color: colors.$kv-green;
   }
+}
+
+.release-status {
+  position: absolute;
+  bottom: -3.5%;
+  left: 5%;
+  padding: 2px 6px;
+  border-radius: 10px;
+
+  font-size: 0.8em;
+  font-weight: bold;
+
+  background-color: colors.$kv-secondary-800;
 }
 
 .name {

@@ -1,0 +1,160 @@
+@use '../../colors' as colors;
+@use '../../custom' as custom;
+
+// Accordion
+.accordion {
+  font-size: 1rem;
+}
+
+.accordion-header {
+  background-color: colors.$kv-primary-900 !important;
+  border: none !important;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  width: 100%;
+
+  text-align: start;
+  font-size: 1.2em;
+
+  &:hover {
+    opacity: 1;
+    background-color: colors.$kv-primary-800 !important;
+  }
+
+  &.active {
+    opacity: 1;
+    background-color: colors.$kv-primary-700 !important;
+  }
+}
+
+.accordion-body {
+  height: 0;
+  transition: height 0.2s ease-out;
+
+  overflow: auto;
+  overflow-x: hidden;
+  background-color: inherit;
+  @include custom.scrollbar;
+
+  font-size: 1em;
+  overscroll-behavior: contain;
+
+  @include custom.disable-select;
+}
+
+// Checkbox
+.checkbox {
+  color: colors.$kv-text-on-primary !important;
+  font-size: 1.2em;
+  @include custom.disable-select;
+
+  input {
+    background-color: colors.$kv-primary-800 !important;
+
+    &:hover~label {
+      text-decoration: underline;
+    }
+  }
+
+  label {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:hover i {
+      color: colors.$kv-secondary-800;
+    }
+
+    &:hover svg {
+      color: colors.$kv-secondary-800;
+    }
+  }
+}
+
+// Dropdown
+@mixin dropdown-menu($bg, $hover-bg, $active-bg) {
+  --bs-dropdown-color: white;
+  --bs-dropdown-bg: #{$bg};
+  --bs-dropdown-link-color: white;
+  --bs-dropdown-link-hover-color: white;
+  --bs-dropdown-link-hover-bg: #{$hover-bg};
+  --bs-dropdown-link-active-color: #fff;
+  --bs-dropdown-link-active-bg: #{$active-bg};
+  --bs-dropdown-font-size: 1.1em;
+}
+
+@mixin dropdown-toggle($bg, $hover-bg, $active-bg) {
+  --bs-btn-color: white;
+  --bs-btn-bg: #{$bg};
+  --bs-btn-border-color: none;
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: #{$hover-bg};
+  --bs-btn-hover-border-color: none;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #{$active-bg};
+  --bs-btn-active-border-color: none;
+  --bs-btn-disabled-bg: gray;
+  --bs-btn-disabled-border-color: none;
+  --bs-btn-font-size: 1.2em;
+}
+
+.dropdown-menu {
+  @include dropdown-menu(
+    colors.$kv-primary-800,
+    colors.$kv-primary-700,
+    colors.$kv-secondary-800
+  );
+}
+
+.dropdown-menu-900 {
+  @include dropdown-menu(
+    colors.$kv-primary-900, 
+    colors.$kv-primary-800,
+    colors.$kv-secondary-700
+  );
+}
+
+.dropdown-toggle {
+  @include dropdown-toggle(
+    colors.$kv-primary-800, 
+    colors.$kv-primary-700,
+    colors.$kv-primary-600)
+}
+
+.dropdown-toggle-900 {
+  @include dropdown-toggle(
+    colors.$kv-primary-900, 
+    colors.$kv-primary-800,
+    colors.$kv-primary-700)
+}
+
+// Form
+.form-control {
+  background-color: colors.$kv-primary-800 !important;
+  color: colors.$kv-text-on-primary !important;
+
+  &:active {
+    background-color: colors.$kv-primary-800 !important;
+    color: colors.$kv-text-on-primary !important;
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px colors.$kv-secondary-800 !important;
+    border-color: colors.$kv-secondary-800 !important;
+  }
+}
+
+.input-group-text {
+  background-color: colors.$kv-primary-700 !important;
+  color: colors.$kv-text-on-primary !important;
+
+  &:active {
+    background-color: colors.$kv-primary-700 !important;
+    color: colors.$kv-text-on-primary !important;
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 2px colors.$kv-secondary-700 !important;
+    border-color: colors.$kv-secondary-800 !important;
+  }
+}
