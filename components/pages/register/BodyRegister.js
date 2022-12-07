@@ -2,13 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
-import {BsEnvelopeFill} from 'react-icons/bs';
 import Card from 'react-bootstrap/Card';
 
 function BodyRegister() {
   return (
-    <Container>
-    <Card  bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
+    <Container className ="p-5">
+    <Card className ="p-5"   bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
       <Card.Body>
      <Stack gap={2} className="col-md-5 mx-auto">
      <Form.Group className="mb-7">
