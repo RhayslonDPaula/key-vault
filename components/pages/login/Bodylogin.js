@@ -2,14 +2,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
-import {BsEnvelopeFill} from 'react-icons/bs';
 import Card from 'react-bootstrap/Card';
 
 
 function Bodylogin() {
   return ( 
-  <Container>
-    <Card bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
+    <Container className ="p-5">
+    <Card className ="p-5"  bg= "shadow text-bg-kv-primary-700" style={{ width: '25' }}>
       <Card.Body>
    
      <Stack gap={2} className="col-md-5 mx-auto">
@@ -37,9 +36,7 @@ function Bodylogin() {
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Text className="text-muted">
-          Esqueceu a senha ?
-        </Form.Text>
+        <Card.Link href="/recuperar-senha"> Esqueceu a senha ?</Card.Link>
       </Form.Group>
     
      </Stack>
